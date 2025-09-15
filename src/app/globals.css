@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root{
+    --purple:#6f42c1;
+    --blue:#75e5cf;
+    --gray:#949697;
+    --pink:#fdf7ef;
+}
+
+/* Brandlist upar auto-slider ni css */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  animation-play-state: running;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
