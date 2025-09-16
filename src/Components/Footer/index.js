@@ -3,15 +3,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-black text-white p-10">
-      
-
+    <div className="bg-black text-white p-10 ">
       {/* Grid Columns */}
-      <div className="grid grid-cols-2 md:grid-cols-7 gap-6">
+      <div className="grid grid-cols-2 text-xl md:grid-cols-7 gap-6 border-b border-gray-500 pb-6">
         {/* Logo */}
-      <div className="mb-6">
-        <Image src={"/footerlogo.svg"} alt="logo" width={70} height={70} />
-      </div>
+        <div className="mb-6">
+          <Image src={"/footerlogo.svg"} alt="logo" width={100} height={100} />
+        </div>
         {/* first column */}
         <div>
           <ul className="space-y-2">
@@ -73,7 +71,12 @@ const Footer = () => {
             <li>Resources</li>
           </ul>
         </div>
+       
       </div>
+       <div className="flex flex-row justify-between mt-6 text-sm md:text-base">
+        <p>Growthpond Technology Pvt Ltd. All rights reserved, 2025.</p>
+        <p>Made in india</p>
+        </div>
     </div>
   );
 };
