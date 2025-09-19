@@ -11,7 +11,7 @@ const logos = [
 
 export default function BrandSlider() {
   return (
-    <div className="w-full overflow-hidden bg-[#1A171D] py-6 relative">
+    <div className="w-full overflow-hidden bg-[#1A171D] py-6  relative">
       <div className="flex w-max animate-scroll gap-16 hover:[animation-play-state:paused]">
         {/* Duplicate logos array for infinite effect */}
         {[...logos, ...logos].map((logo, index) => (

@@ -1,14 +1,19 @@
+
+
+
+
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleDown, FaBars, FaXmark  } from "react-icons/fa6";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Outside click close
+  // Outside click close for desktop dropdown
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -19,7 +24,7 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Toggle menu
+  // Toggle desktop menu
   const toggleMenu = (menu) => {
     setOpenMenu((prev) => (prev === menu ? null : menu));
   };
@@ -32,65 +37,34 @@ export default function Navbar() {
           <Image src="/logo.svg" alt="dukaan logo" height={100} width={150} />
         </div>
 
-        {/* Navigation */}
+        {/* Desktop Navigation */}
         <div
           className="hidden md:flex space-x-10 text-xl text-gray-700 items-center"
           ref={dropdownRef}
         >
-          {/* Dropdowns */}
-          {[
+          {[ 
             {
               label: "Products",
               key: "products",
               items: [
-                {
-                  href: "/themes",
-                  icon: "/themes.svg",
-                  title: "Dukaan themes",
-                  desc: "Discover themes from our curated collection.",
-                },
-                {
-                  href: "/delievery",
-                  icon: "/truck.svg",
-                  title: "Dukaan delivery",
-                  desc: "Your pan-India hassle-free shipping partner.",
-                },
+                { href: "/themes", icon: "/themes.svg", title: "Dukaan themes", desc: "Discover themes from our curated collection." },
+                { href: "/delievery", icon: "/truck.svg", title: "Dukaan delivery", desc: "Your pan-India hassle-free shipping partner." },
               ],
             },
             {
               label: "Company",
               key: "company",
               items: [
-                {
-                  href: "/career",
-                  icon: "/career.svg",
-                  title: "Careers",
-                  desc: "Join the team and be a part of the rocketship.",
-                },
-                {
-                  href: "/about",
-                  icon: "/informaion.svg",
-                  title: "About",
-                  desc: "The who, what, and why of Dukaan.",
-                },
+                { href: "/career", icon: "/career.svg", title: "Careers", desc: "Join the team and be a part of the rocketship." },
+                { href: "/about", icon: "/informaion.svg", title: "About", desc: "The who, what, and why of Dukaan." },
               ],
             },
             {
               label: "Resources",
               key: "resources",
               items: [
-                {
-                  href: "/blog",
-                  icon: "/blog.svg",
-                  title: "Blog",
-                  desc: "Get useful tips on how to start & grow your business.",
-                },
-                {
-                  href: "/contact",
-                  icon: "/helpcenter.svg",
-                  title: "Help Center",
-                  desc: "Free tools to help your business grow.",
-                },
+                { href: "/blog", icon: "/blog.svg", title: "Blog", desc: "Get useful tips on how to start & grow your business." },
+                { href: "/contact", icon: "/helpcenter.svg", title: "Help Center", desc: "Free tools to help your business grow." },
               ],
             },
           ].map((menu) => (
@@ -99,7 +73,7 @@ export default function Navbar() {
                 className="flex items-center gap-1 hover:text-blue-600"
                 onClick={() => toggleMenu(menu.key)}
               >
-                {menu.label} <FaAngleDown className="h-4 w-4 text-center " />
+                {menu.label} <FaAngleDown className="h-4 w-4" />
               </button>
 
               {openMenu === menu.key && (
@@ -108,14 +82,10 @@ export default function Navbar() {
                     <Link
                       key={idx}
                       href={item.href}
-                      onClick={() => setOpenMenu(null)} // ✅ Item click → close
+                      onClick={() => setOpenMenu(null)}
                     >
                       <div className="flex gap-4 hover:bg-gray-100 p-3 rounded-lg cursor-pointer">
-                        <img
-                          src={item.icon}
-                          alt={item.title}
-                          className="w-8 h-8"
-                        />
+                        <img src={item.icon} alt={item.title} className="w-8 h-8" />
                         <div>
                           <p className="font-semibold">{item.title}</p>
                           <p className="text-sm text-gray-500">{item.desc}</p>
@@ -127,20 +97,80 @@ export default function Navbar() {
               )}
             </div>
           ))}
-
-          <a href="#" className="hover:text-blue-600">
-            Pricing
-          </a>
+          <a href="#" className="hover:text-blue-600">Pricing</a>
         </div>
 
-        {/* Buttons */}
-        <div className="flex items-center space-x-6 text-xl">
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex items-center space-x-6 text-xl">
           <button className="text-gray-700 hover:text-blue-600">Sign in</button>
           <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Start free
           </button>
         </div>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <FaXmark  className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg border-t border-gray-200">
+          <div className="flex flex-col px-6 py-4 space-y-4">
+            {[ 
+              {
+                label: "Products",
+                key: "products",
+                items: [
+                  { href: "/themes", title: "Dukaan themes" },
+                  { href: "/delievery", title: "Dukaan delivery" },
+                ],
+              },
+              {
+                label: "Company",
+                key: "company",
+                items: [
+                  { href: "/career", title: "Careers" },
+                  { href: "/about", title: "About" },
+                ],
+              },
+              {
+                label: "Resources",
+                key: "resources",
+                items: [
+                  { href: "/blog", title: "Blog" },
+                  { href: "/contact", title: "Help Center" },
+                ],
+              },
+            ].map((menu) => (
+              <div key={menu.key}>
+                <p className="font-semibold text-gray-700 mb-2">{menu.label}</p>
+                <ul className="flex flex-col space-y-2">
+                  {menu.items.map((item, idx) => (
+                    <li key={idx}>
+                      <Link href={item.href} onClick={() => setMobileMenuOpen(false)}>
+                        <p className="text-gray-600 hover:text-blue-600">{item.title}</p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <Link href="#" onClick={() => setMobileMenuOpen(false)}>
+              <p className="text-gray-600 hover:text-blue-600">Pricing</p>
+            </Link>
+            <div className="flex flex-col space-y-2 mt-4">
+              <button className="text-gray-700 hover:text-blue-600 text-left">Sign in</button>
+              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-left">
+                Start free
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

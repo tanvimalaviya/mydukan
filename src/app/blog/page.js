@@ -38,11 +38,11 @@ const Page = () => {
               <h2 className="text-xl font-bold text-gray-800 mb-2">
                 {blog.title}
               </h2>
-              <p className="text-gray-500 text-sm mb-4">
+              {/* <p className="text-gray-500 text-sm mb-4">
                 Last updated on:{" "}
                 <span className="font-medium">{blog.date}</span> by{" "}
                 <span className="text-blue-600">{blog.author}</span>
-              </p>
+              </p> */}
               <p className="text-gray-600 text-sm mb-4">{blog.excerpt}</p>
             <Link
                 href={`/blog/${blog.slug}`}   // ✅ dynamic slug link

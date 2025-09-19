@@ -36,7 +36,6 @@ const videodata = [
   },
 ];
 
-
 const Page = () => {
   return (
     <div>
@@ -121,27 +120,42 @@ const Page = () => {
 
       {/* Cient review Section */}
       <div className="max-w-6xl mx-auto px-6  text-center">
-        <h2 className="text-[36px] leading-[42px] font-bold tracking-[-0.02em] ">What Our Client Say</h2>
-        <Clientreview/>
-        </div>
+        <h2 className="text-[36px] leading-[42px] font-bold tracking-[-0.02em] ">
+          What Our Client Say
+        </h2>
+        <Clientreview />
+      </div>
 
-          <section style={{backgroundImage: "url('/contactimagefoehero.webp')", backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-7xl px-4 mt-12 ml-20 mr-20 space-y-6 pt-10  mb-20 rounded-3xl">
-              <div className='flex flex-col space-y-6 pb-10 '>
-                
-              
-                <div className="text-left space-y-4 p-8">
-                    <Image src={"/logosmall.svg"} alt="logo" width={70} height={70} />
-                    <h1 className="text-4xl font-bold max-w-2xl">Do you want to sell on our Marketplace?</h1>
-                    <p className="text-gray-700 max-w-2xl">
-                        Unlock new earning opportunity by selling your plugins & themes on our marketplace.
-                    </p>
-                    <Link href={"/contact"} className="text-white">
-                    <button className='bg-black text-white pl-4 pr-4 pt-3 pb-3 rounded-2xl'>Get Started</button>
-                    </Link>
-              </div>
-                </div>
-        
-          </section>
+      <section
+        style={{
+          backgroundImage: "url('/contactimagefoehero.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 mt-12 space-y-6 pt-10 mb-20 rounded-3xl"
+      >
+        <div className="flex flex-col space-y-6 pb-10">
+          {/* Text Content */}
+          <div className="text-left space-y-4 p-6 sm:p-8  lg:bg-transparent rounded-2xl lg:rounded-none">
+            <Image src={"/logosmall.svg"} alt="logo" width={70} height={70} />
+
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold max-w-2xl text-white lg:text-black">
+              Do you want to sell on our Marketplace?
+            </h1>
+
+            <p className="text-gray-200 lg:text-gray-700 max-w-2xl text-sm sm:text-base">
+              Unlock new earning opportunity by selling your plugins & themes on
+              our marketplace.
+            </p>
+
+            <Link href={"/contact"} className="text-white">
+              <button className="bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition">
+                Get Started
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -40,17 +40,22 @@ const testimonials = [
 
 export default function TestimonialSlider() {
   return (
-    <div className="max-w-6xl mx-auto py-10">
+    <div className="max-w-6xl mx-auto py-10 px-4">
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        spaceBetween={20}
         pagination={{ clickable: true }}
         modules={[Pagination]}
-        className="mySwiper pb-12" // extra padding niche dots mate
+        className="mySwiper pb-12"
+        breakpoints={{
+          0: { slidesPerView: 1 }, // ✅ mobile
+          640: { slidesPerView: 1 }, // ✅ small screens
+          768: { slidesPerView: 2 }, // ✅ tablets
+          1024: { slidesPerView: 3 }, // ✅ desktops
+        }}
       >
         {testimonials.map((item, i) => (
           <SwiperSlide key={i}>
-            <div className="p-6 shadow-lg rounded-lg bg-[var(--pink)] text-left">
+            <div className="p-6 shadow-lg rounded-lg bg-[var(--pink)] text-left h-full">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -66,11 +71,12 @@ export default function TestimonialSlider() {
         ))}
       </Swiper>
 
-      {/* ✅ Pagination dots niche show karava */}
+      {/* ✅ Pagination dots niche fix */}
       <style jsx global>{`
         .swiper-pagination {
           position: relative !important;
           margin-top: 20px;
+          text-align: center;
         }
       `}</style>
     </div>

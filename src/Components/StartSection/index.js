@@ -5,8 +5,8 @@ import React from 'react'
 const StartSection = () => {
   return (
     <div>
-      <section style={{backgroundImage: "url('/contactimagefoehero.webp')", backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-7xl px-4 mt-12 space-y-6 pt-10  mb-20 rounded-3xl">
-      <div className='flex flex-col space-y-6 pb-10 pl-20'>
+      <section style={{backgroundImage: "url('/contactimagefoehero.webp')", backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-7xl px-4 mt-12 ml-20 mr-20 space-y-6 pt-10  mb-20 rounded-3xl">
+      <div className='flex flex-col space-y-6 pb-10 '>
         
       
         <div className="text-left space-y-4 p-8">

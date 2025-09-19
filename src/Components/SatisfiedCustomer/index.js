@@ -56,7 +56,7 @@ export default function SatisfiedCustomer() {
   }, [totalPages]);
 
   return (
-    <section className="relative  mx-auto text-center px-4 mt-24 space-y-3">
+    <section className="relative  mx-auto text-center px-4 space-y-3">
       {/* Decorative background image */}
      
 
